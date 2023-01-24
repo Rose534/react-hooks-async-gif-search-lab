@@ -1,10 +1,18 @@
-function GitSearch() {
-    return (
-        <form class="d-flex" role="search"> 
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-        <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-    )
+import React, { useState } from 'react';
+
+const GifSearch = ({ handleSubmit }) => {
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const handleChange = (e) => {
+    setSearchTerm(e.target.value);
+  }
+
+  return (
+    <form onSubmit={e => handleSubmit(e, searchTerm)}>
+      <input type="text" placeholder="Search for a gif" value={searchTerm} onChange={handleChange} />
+      <button type="submit">Search</button>
+    </form>
+  )
 }
 
-export default GitSearch;
+export default GifSearch;
